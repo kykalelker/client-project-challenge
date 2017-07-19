@@ -9,6 +9,17 @@
   </head>
 
   <body>
+    <nav>
+    <div>
+      <!-- <% if logged_in? %>
+      <h3><%= link_to "#{current_user.username}", user_path(current_user)%> | <%= link_to "logout", logout_path, method: :delete %> | <%= link_to "home", root_path%></h3>
+      <% else %> -->
+      <h3><%= link_to "login", new_login_path%> | <%= link_to "sign up", new_user_path%> | <%= link_to "home", root_path%></h3>
+      <!-- <% end %> -->
+    </div>
+  </nav>
+  <div>
     <%= yield %>
+  </div>
   </body>
 </html>

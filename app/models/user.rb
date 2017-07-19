@@ -29,4 +29,12 @@ class User < ApplicationRecord
     @user.password = params[:password] if check_password
     @user.save!
   end
+
+  def commented_movies
+    results = self.comments.map do |comment|
+      comment.root_movie
+    end
+    results.uniq
+  end
+
 end

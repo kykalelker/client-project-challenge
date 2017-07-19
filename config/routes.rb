@@ -7,8 +7,18 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: 'login'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :movies do
+  resources :movies, shallow: true do
     resources :comments
   end
-  
+
+  resources :users do
+    resources :favorites, only: [:index]
+  end
+
+  resources :users do
+    resources :watches, only: [:index]
+  end
+
+  resources :searches, only: [:index]
+
 end

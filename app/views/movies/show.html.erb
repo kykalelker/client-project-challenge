@@ -15,14 +15,13 @@
   <% end %>
 <% end %>
 
-
-<!-- show if only if not already in favorites -->
 <% if !already_favorited?(current_user, @movie) %>
   <%= button_to "Add to Favorites", movie_favorites_path(@movie), method: :post %>
 <% end %>
 
-<!-- show if only if not already in watchlist -->
-<!-- add to watchlist -->
+<% if !already_on_watchlist?(current_user, @movie) %>
+  <%= button_to "Add to Watchlist", movie_watches_path(@movie), method: :post %>
+<% end %>
 
 <h2>Comments</h2>
 <!-- add comments for all comments -->

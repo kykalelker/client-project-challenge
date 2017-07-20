@@ -1,0 +1,19 @@
+<h3>Search results</h3>
+<div >
+<% if @movies == [] %>
+<h4>No movies found in database</h4>
+<% else %>
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= image_tag movie.boxart_url,  :size => "240x320" %> </td>
+      <td>&nbsp</td>
+      <td>&nbsp <%= link_to movie.title, movie_path(movie) %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+</div>

@@ -1,12 +1,10 @@
 <h1><%= @movie.title %></h1>
 
 <div>
-  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", height: '250') %>
-<div>
-<div>
+  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", size: "240x320") %>
   <p>Released: <%= @movie.year %></p>
   <p>Lead Actor: <%= @movie.lead_actor %></p>
-  <p>Profile Created By: <%= @movie.creator.username %></p>
+  <p>Movie entry created by: <%= @movie.creator.username %></p>
 </div>
 
 <% if flash[:notice] %>
@@ -48,36 +46,4 @@
   <% end %>
 <% end %> -->
 
-
-
-
-
-
-
-
-<!-- <%= show_comments %> -->
-
-
-<!-- <div class="comment">
-  <p>Parent Comment</p>
-  <div class="comment">
-    <p>Child Comment1</p>
-    <div class="comment">
-      <p>Child Comment2</p>
-
-    </div>
-  </div>
-</div>
-
-<table>
-  <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment.user.username %> &nbsp | &nbsp <%= comment.body %></td>
-      <table>
-          <% comment.comments.each do |childComment| %>
-              <tr><td> &nbsp - &nbsp <%= childComment.user.username %> &nbsp | &nbsp <%= childComment.body %></td></tr>
-              <%end%>
-      </table>
-    </tr>
-  <% end %>
-</table> -->
+<h2>Comments</h2>

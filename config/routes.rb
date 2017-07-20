@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resources :watches, only: :create
   end
 
-  resources :searches, only: :index
-  resources :comments, only: :create
+  resources :comments
+
+  post '/movies/search', to: 'movies#search', as: 'search_movies'
 
 end

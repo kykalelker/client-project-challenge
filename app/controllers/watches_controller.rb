@@ -1,5 +1,7 @@
 class WatchesController < ApplicationController
-  def show
+  def index
+    @user = User.find(params[:user_id])
+    @movies = Watch.watch_movies(params[:user_id])
   end
 
   def create

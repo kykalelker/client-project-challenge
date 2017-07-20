@@ -8,12 +8,10 @@
 
 <h1><%= @movie.title %></h1>
 <div>
-  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", height: '250') %>
-<div>
-<div>
+  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", size: "240x320") %>
   <p>Released: <%= @movie.year %></p>
   <p>Lead Actor: <%= @movie.lead_actor %></p>
-  <p>Profile Created By: <%= @movie.creator.username %></p>
+  <p>Movie entry created by: <%= @movie.creator.username %></p>
 </div>
 
 <% if !already_favorited?(current_user, @movie) %>
@@ -23,6 +21,7 @@
 <% if !already_on_watchlist?(current_user, @movie) %>
   <%= button_to "Add to Watchlist", movie_watches_path(@movie), method: :post %>
 <% end %>
+
 
 <h2>Add a Comment</h2>
 <%= render partial: 'comments/form', locals: { commentable: @movie } %>

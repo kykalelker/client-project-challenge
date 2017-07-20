@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'movies#index'
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show] do
+    resources :favorites, only: [:index, :show]
+    resources :watches, only: [:index, :show]
+  end
 
   get '/login', to: 'sessions#new', as: 'new_login'
   post '/login', to: 'sessions#create', as: 'login'
@@ -11,14 +14,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :users do
-    resources :favorites, only: [:index]
-  end
-
-  resources :users do
-    resources :watches, only: [:index]
-  end
-
   resources :searches, only: [:index]
+
+  resources :favorites, only: [:create]
 
 end

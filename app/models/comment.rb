@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
 
+  scope :recent, -> { order("created_at DESC").limit(3) }
+
   def root_movie
     if self.commentable_type == "Movie"
       return self.commentable
@@ -11,3 +13,5 @@ class Comment < ApplicationRecord
     end
   end
 end
+
+

@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
   root 'movies#index'
+
   resources :users, only: [:new, :create, :show] do
-    resources :favorites, only: [:index, :show, :create]
-    resources :watches, only: [:index, :show, :create]
+    resources :favorites, only: :index
+    resources :watches, only: :index
   end
+
   get '/login', to: 'sessions#new', as: 'new_login'
   post '/login', to: 'sessions#create', as: 'login'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
+  
   resources :movies, shallow: true do
-    resources :comments
+    # resources :comments
+    resources :favorites, only: :create
+    resources :watches, only: :create
   end
-  resources :searches, only: [:index]
+
+  resources :comments, only: :create
+
+  post '/movies/search', to: 'movies#search', as: 'search_movies'
+
 end

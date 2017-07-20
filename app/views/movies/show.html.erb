@@ -1,20 +1,10 @@
-<!-- Movie poster image
-movie details
-add to favorite
-add to watchlist
-
-comments section
-add comment
-recursive
- -->
-
- <h1><%= @movie.title %></h1>
+<h1><%= @movie.title %></h1>
 
 <div>
-  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart") %>
+  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", size: "240x320") %>
   <p>Released: <%= @movie.year %></p>
   <p>Lead Actor: <%= @movie.lead_actor %></p>
-  <p>Profile Created By: <%= @movie.creator.username %></p>
+  <p>Movie entry created by: <%= @movie.creator.username %></p>
 </div>
 
 <% if flash[:notice] %>

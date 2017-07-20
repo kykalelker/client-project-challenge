@@ -1,12 +1,3 @@
-<h1><%= @movie.title %></h1>
-
-<div>
-  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", size: "240x320") %>
-  <p>Released: <%= @movie.year %></p>
-  <p>Lead Actor: <%= @movie.lead_actor %></p>
-  <p>Movie entry created by: <%= @movie.creator.username %></p>
-</div>
-
 <% if flash[:notice] %>
   <% flash[:notice].each do |error| %>
     <div>
@@ -14,6 +5,14 @@
     </div>
   <% end %>
 <% end %>
+
+<h1><%= @movie.title %></h1>
+<div>
+  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", size: "240x320") %>
+  <p>Released: <%= @movie.year %></p>
+  <p>Lead Actor: <%= @movie.lead_actor %></p>
+  <p>Movie entry created by: <%= @movie.creator.username %></p>
+</div>
 
 <% if !already_favorited?(current_user, @movie) %>
   <%= button_to "Add to Favorites", movie_favorites_path(@movie), method: :post %>
@@ -23,27 +22,11 @@
   <%= button_to "Add to Watchlist", movie_watches_path(@movie), method: :post %>
 <% end %>
 
-<h2>Add a Comment</h2><!--
-<%= form_for @comment do |f| %>
-  <p>
-    <%= f.text_area :body, cols: '40', rows: '5', placeholder: 'Start typing your comment here' %>
-    <%= f.hidden_field :movie_id, value: @movie.id %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
- -->
-<h2>Comments</h2>
-<!--
-<% @movie.comments.each do |root_comment| %>
-  <div>
-   <%= root_comment.body %> - <%= root_comment.user.username %>
-  </div>
-  <%= form_for :root_comment do |f| %>
-    <%= f.text_field :body %>
-    <%= f.submit %>
-  <% end %>
-<% end %> -->
+
+<h2>Add a Comment</h2>
+<%= render partial: 'comments/form', locals: { commentable: @movie } %>
 
 <h2>Comments</h2>
+<div>
+  <%= render partial: 'comments/comment', collection: @movie.comments %>
+</div>

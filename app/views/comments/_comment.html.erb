@@ -1,0 +1,7 @@
+<div class="comment">
+  <%= comment.body %>
+  <%= render partial: 'comments/form', locals: { commentable: comment } %>
+  <div>
+    <%= render partial: 'comments/comment', collection: comment.comments %>
+  </div>
+</div>

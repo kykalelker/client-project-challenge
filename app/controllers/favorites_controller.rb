@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
-  def show
+  def index
+    @user = User.find(params[:user_id])
+    @movies = Favorite.fav_movies(params[:user_id])
   end
 
   def create

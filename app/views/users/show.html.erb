@@ -9,13 +9,12 @@
 	<%= @user.email %>
 </p>
 
-<strong><%= link_to 'favorites', users_path %></strong>
-<strong><%= link_to 'watches', users_path %></strong>
+<strong><%= link_to 'favorites', user_favorites_path(@user.id) %></strong>
+<strong><%= link_to 'watches', user_watches_path(@user.id) %></strong>
 
 <div>
 	<h2>Movies You've Added</h2>
-	<ul>\
-
+	<ul>
 		<% @movies.each do |movie| %>
 		<li> <%=link_to movie.title, movie_path(movie) %> , <%= image_tag(movie.boxart_url , size: "240x320") %></li>
 		<% end %>

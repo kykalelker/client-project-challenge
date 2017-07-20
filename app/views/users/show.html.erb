@@ -1,9 +1,37 @@
+<h1>Profile Page</h1>
 <p>
-  <strong>Username:</strong>
-  <%= @user.username %>
+	<strong>Username:</strong>
+	<%= @user.username %>
 </p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @user.email %>
+	<strong>Email:</strong>
+	<%= @user.email %>
 </p>
+
+<strong><%= link_to 'favorites', users_path %></strong>
+<strong><%= link_to 'watches', users_path %></strong>
+
+<div>
+	<h2>Movies You've Added</h2>
+	<ul>\
+		
+		<% @movies.each do |movie| %>
+		<li> <%=link_to movie.title, movie_path(movie) %> , <%= image_tag(movie.boxart_url) %></li>
+		<% end %> 
+	</ul>
+</div>
+
+
+
+<div>
+	<h2>Comments By You</h2>
+	<ul>
+		<% @comments.each do |comment| %>
+		<li> <%=link_to "#{comment.body}", comment_path(comment) %></li>	
+	<% end %> 
+</ul>
+</div>
+
+
+

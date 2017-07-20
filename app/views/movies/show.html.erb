@@ -2,6 +2,8 @@
 
 <div>
   <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", height: '250') %>
+<div>
+<div>
   <p>Released: <%= @movie.year %></p>
   <p>Lead Actor: <%= @movie.lead_actor %></p>
   <p>Profile Created By: <%= @movie.creator.username %></p>
@@ -23,5 +25,59 @@
   <%= button_to "Add to Watchlist", movie_watches_path(@movie), method: :post %>
 <% end %>
 
+<h2>Add a Comment</h2><!--
+<%= form_for @comment do |f| %>
+  <p>
+    <%= f.text_area :body, cols: '40', rows: '5', placeholder: 'Start typing your comment here' %>
+    <%= f.hidden_field :movie_id, value: @movie.id %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ -->
 <h2>Comments</h2>
-<!-- add comments for all comments -->
+<!--
+<% @movie.comments.each do |root_comment| %>
+  <div>
+   <%= root_comment.body %> - <%= root_comment.user.username %>
+  </div>
+  <%= form_for :root_comment do |f| %>
+    <%= f.text_field :body %>
+    <%= f.submit %>
+  <% end %>
+<% end %> -->
+
+
+
+
+
+
+
+
+<!-- <%= show_comments %> -->
+
+
+<!-- <div class="comment">
+  <p>Parent Comment</p>
+  <div class="comment">
+    <p>Child Comment1</p>
+    <div class="comment">
+      <p>Child Comment2</p>
+
+    </div>
+  </div>
+</div>
+
+<table>
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.user.username %> &nbsp | &nbsp <%= comment.body %></td>
+      <table>
+          <% comment.comments.each do |childComment| %>
+              <tr><td> &nbsp - &nbsp <%= childComment.user.username %> &nbsp | &nbsp <%= childComment.body %></td></tr>
+              <%end%>
+      </table>
+    </tr>
+  <% end %>
+</table> -->

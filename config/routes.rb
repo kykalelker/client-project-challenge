@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'new_login'
   post '/login', to: 'sessions#create', as: 'login'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
-  
+
   resources :movies, shallow: true do
     # resources :comments
     resources :favorites, only: :create
     resources :watches, only: :create
   end
 
-  resources :comments, only: :create
+  resources :comments
 
   post '/movies/search', to: 'movies#search', as: 'search_movies'
 

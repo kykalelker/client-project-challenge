@@ -1,14 +1,16 @@
-<h1>Profile Page</h1>
+<h3><%= @user.username %>'s Favorites List</h3>
+<strong><%= link_to 'Back to profile page', user_path(@user) %></strong>
+<% if @movies == [] %>
 <p>
-	<strong>Username:</strong>
-	<%= @user.username %>
+	<%= @user.username %> hasn't added any movies to his favorites list.
 </p>
-
-<p>
-	<strong>Email:</strong>
-	<%= @user.email %>
-</p>
-
-<strong><%= link_to 'watches', users_path %></strong>
-
+<% else %>
 <div>
+	<% @movies.each do |movie| %>
+	<div>
+	<h4><%= link_to movie.title, movie_path(movie) %></h4>
+		<%= image_tag movie.boxart_url,  :size => "240x320" %><br>
+	</div>
+	<% end %>
+</div>
+<% end %>

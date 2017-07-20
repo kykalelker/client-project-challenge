@@ -1,8 +1,28 @@
-Movie poster image
-movie details
-add to favorite
-add to watchlist
+<h1><%= @movie.title %></h1>
 
-comments section
-add comment
-recursive
+<div>
+  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart") %>
+  <p>Released: <%= @movie.year %></p>
+  <p>Lead Actor: <%= @movie.lead_actor %></p>
+  <p>Profile Created By: <%= @movie.creator.username %></p>
+</div>
+
+<% if flash[:notice] %>
+  <% flash[:notice].each do |error| %>
+    <div>
+      <%= error %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<!-- show if only if not already in favorites -->
+<% if !already_favorited?(current_user, @movie) %>
+  <%= button_to "Add to Favorites", movie_favorites_path(@movie), method: :post %>
+<% end %>
+
+<!-- show if only if not already in watchlist -->
+<!-- add to watchlist -->
+
+<h2>Comments</h2>
+<!-- add comments for all comments -->

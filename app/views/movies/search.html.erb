@@ -3,17 +3,13 @@
 <% if @movies == [] %>
 <h4>No movies found in database</h4>
 <% else %>
-<table>
-  <tr>
-    <th>Title</th>
-  </tr>
+<div id="movie-list">
   <% @movies.each do |movie| %>
-    <tr>
-      <td><%= image_tag movie.boxart_url,  :size => "240x320" %> </td>
-      <td>&nbsp</td>
-      <td>&nbsp <%= link_to movie.title, movie_path(movie) %></td>
-    </tr>
+  <div class="col-md-4">
+    <strong><%= link_to movie.title, movie_path(movie) %></strong><br>
+    <%= image_tag movie.boxart_url,  :size => "240x320" %>
+  </div>
   <% end %>
-</table>
+</div>
 <% end %>
 </div>

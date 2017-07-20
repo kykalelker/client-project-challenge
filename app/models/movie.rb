@@ -3,4 +3,6 @@ class Movie < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :favorites
   has_many :watches
+
+  scope :recent, -> { order("created_at DESC").limit(3) }
 end

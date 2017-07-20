@@ -1,9 +1,49 @@
-<div>
-<h2>Add new movie</h2>
+
+<h3>Welcome to you movie database(camp)</h3>
+<div class="container">
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+ 
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= image_tag movie.boxart_url,  :size => "240x320" %> </td>
+      <td>&nbsp</td>
+      <td>&nbsp <%= link_to movie.title, movie_path(movie) %></td>
+    </tr>
+  <% end %>
+</table>
 </div>
 
-<div>
-  <h2>Featured movies</h2>
+<div id="act-feed">
+<h3> Activity Feed </h3>
+
+<table>
+ <tr>
+    <th>Last 3 movies added to IMDbc</th>
+  </tr>
+
+  <% @moviesRecent.each do |movie| %>
+    <tr>
+      <td><%= link_to movie.title, movie_path(movie) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<table>
+ <tr>
+    <th>Movies most recently commented on</th>
+  </tr>
+
+  <% @recentMoviesCommented.each do |movie| %>
+    <tr>
+      <td><%= link_to movie.title, movie_path(movie) %></td>
+    </tr>
+  <% end %>
+</table>
 </div>
 
-include section for activities
+
+
+

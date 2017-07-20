@@ -1,7 +1,7 @@
 <h1><%= @movie.title %></h1>
 
 <div>
-  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart") %>
+  <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", height: '250') %>
   <p>Released: <%= @movie.year %></p>
   <p>Lead Actor: <%= @movie.lead_actor %></p>
   <p>Profile Created By: <%= @movie.creator.username %></p>

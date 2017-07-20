@@ -9,21 +9,24 @@
 	<%= @user.email %>
 </p>
 
-<strong><%= link_to 'favorites', user_favorites_path(@user) %></strong>
-<strong><%= link_to 'watches', user_watches_path(@user) %></strong>
+<h3><%= link_to 'favorites', user_favorites_path(@user) %></h3>
+<h3><%= link_to 'watches', user_watches_path(@user) %></h3>
 
 <div>
 	<h2>Movies You've Added</h2>
-	<ul>
-		<% @movies.each do |movie| %>
-		<li> <%=link_to movie.title, movie_path(movie) %> , <%= image_tag(movie.boxart_url , size: "240x320") %></li>
-		<% end %>
-	</ul>
+	<div id="movie-list">
+	  <% @movies.each do |movie| %>
+	  <div class="col-md-4">
+	    <strong><%= link_to movie.title, movie_path(movie) %></strong><br>
+	    <%= image_tag movie.boxart_url,  :size => "240x320" %>
+	  </div>
+	  <% end %>
+	</div>
 </div>
 
 
 
-<div>
+<div class="col-md-12">
 	<h2>Comments By You</h2>
 	<ul>
 		<% @comments.each do |comment| %>

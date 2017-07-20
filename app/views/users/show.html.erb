@@ -9,8 +9,8 @@
 	<%= @user.email %>
 </p>
 
-<h3><%= link_to 'favorites', user_favorites_path(@user) %></h3>
-<h3><%= link_to 'watches', user_watches_path(@user) %></h3>
+<h4><%= link_to 'Favorites list', user_favorites_path(@user) %></h4>
+<h4><%= link_to 'Watch list', user_watches_path(@user) %></h4>
 
 <div>
 	<h2>Movies You've Added</h2>
@@ -27,10 +27,10 @@
 
 
 <div class="col-md-12">
-	<h2>Comments By You</h2>
+	<h2>Movies you have commented on:</h2>
 	<ul>
-		<% @comments.each do |comment| %>
-		<li> <%=link_to "#{comment.body}", comment_path(comment) %></li>
-	<% end %>
-</ul>
+		<% @com_movies.each do |movie| %>
+		<li><%= link_to movie.title, movie_path(movie) %></li>
+		<% end %>
+	</ul>
 </div>

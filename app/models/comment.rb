@@ -7,6 +7,7 @@ class Comment < ApplicationRecord
   validates :body, presence: true
 
   scope :recent, -> { order("created_at DESC").limit(3) }
+  scope :posted_by, ->(user_id) { where(user_id: user_id) }
 
 
   def root_movie
@@ -17,5 +18,3 @@ class Comment < ApplicationRecord
     end
   end
 end
-
-

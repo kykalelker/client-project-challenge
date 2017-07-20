@@ -1,4 +1,10 @@
 class CommentsController < ApplicationController
+  def show
+    comment = Comment.find(params[:id])
+    movie = comment.root_movie
+    redirect_to movie_path(movie)
+  end
+
   def create
     @movie = Movie.find(comment_params[:movie_id])
     if logged_in?

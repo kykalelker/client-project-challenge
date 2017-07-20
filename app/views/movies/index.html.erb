@@ -1,11 +1,13 @@
-
-<h3>Welcome to you movie database(camp)</h3>
+<h3>Welcome to the movie database(camp)</h3>
+<% if logged_in? %>
+<%= link_to 'Add a movie', new_movie_path %>
+<% end %>
 <div class="container">
 <table>
   <tr>
     <th>Title</th>
   </tr>
- 
+
   <% @movies.each do |movie| %>
     <tr>
       <td><%= image_tag movie.boxart_url,  :size => "240x320" %> </td>
@@ -43,7 +45,3 @@
   <% end %>
 </table>
 </div>
-
-
-
-

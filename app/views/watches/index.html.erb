@@ -1,1 +1,16 @@
-watches index
+<h3><%= @user.username %>'s Watch List</h3>
+<strong><%= link_to 'Back to profile page', user_path(@user) %></strong>
+<% if @movies == [] %>
+<p>
+	<%= @user.username %> hasn't added any movies to his watch list.
+</p>
+<% else %>
+<div>
+	<% @movies.each do |movie| %>
+	<div>
+	<h4><%= link_to movie.title, movie_path(movie) %></h4>
+		<%= image_tag movie.boxart_url,  :size => "240x320" %><br>
+	</div>
+	<% end %>
+</div>
+<% end %>

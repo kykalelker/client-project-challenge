@@ -9,8 +9,8 @@
 	<%= @user.email %>
 </p>
 
-<strong><%= link_to 'favorites', user_favorites_path(@user.id) %></strong>
-<strong><%= link_to 'watches', user_watches_path(@user.id) %></strong>
+<strong><%= link_to 'favorites', user_favorites_path(@user) %></strong>
+<strong><%= link_to 'watches', user_watches_path(@user) %></strong>
 
 <div>
 	<h2>Movies You've Added</h2>

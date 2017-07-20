@@ -1,4 +1,5 @@
 <h3><%= @user.username %>'s Favorites List</h3>
+<strong><%= link_to 'Back to profile page', user_path(@user) %></strong>
 <% if @movies == [] %>
 <p>
 	<%= @user.username %> hasn't added any movies to his favorites list.
@@ -13,4 +14,3 @@
 	<% end %>
 </div>
 <% end %>
-<strong><%= link_to 'Profile Page', user_path(@user) %></strong>

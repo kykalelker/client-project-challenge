@@ -1,5 +1,12 @@
-<h1><%= @movie.title %></h1>
+<% if flash[:notice] %>
+  <% flash[:notice].each do |error| %>
+    <div>
+      <%= error %>
+    </div>
+  <% end %>
+<% end %>
 
+<h1><%= @movie.title %></h1>
 <div>
   <%= image_tag(@movie.boxart_url, alt: @movie.title + " boxart", height: '250') %>
 <div>
@@ -9,14 +16,6 @@
   <p>Profile Created By: <%= @movie.creator.username %></p>
 </div>
 
-<% if flash[:notice] %>
-  <% flash[:notice].each do |error| %>
-    <div>
-      <%= error %>
-    </div>
-  <% end %>
-<% end %>
-
 <% if !already_favorited?(current_user, @movie) %>
   <%= button_to "Add to Favorites", movie_favorites_path(@movie), method: :post %>
 <% end %>
@@ -25,59 +24,10 @@
   <%= button_to "Add to Watchlist", movie_watches_path(@movie), method: :post %>
 <% end %>
 
-<h2>Add a Comment</h2><!--
-<%= form_for @comment do |f| %>
-  <p>
-    <%= f.text_area :body, cols: '40', rows: '5', placeholder: 'Start typing your comment here' %>
-    <%= f.hidden_field :movie_id, value: @movie.id %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
- -->
+<h2>Add a Comment</h2>
+<%= render partial: 'comments/form', locals: { commentable: @movie } %>
+
 <h2>Comments</h2>
-<!--
-<% @movie.comments.each do |root_comment| %>
-  <div>
-   <%= root_comment.body %> - <%= root_comment.user.username %>
-  </div>
-  <%= form_for :root_comment do |f| %>
-    <%= f.text_field :body %>
-    <%= f.submit %>
-  <% end %>
-<% end %> -->
-
-
-
-
-
-
-
-
-<!-- <%= show_comments %> -->
-
-
-<!-- <div class="comment">
-  <p>Parent Comment</p>
-  <div class="comment">
-    <p>Child Comment1</p>
-    <div class="comment">
-      <p>Child Comment2</p>
-
-    </div>
-  </div>
+<div>
+  <%= render partial: 'comments/comment', collection: @movie.comments %>
 </div>
-
-<table>
-  <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment.user.username %> &nbsp | &nbsp <%= comment.body %></td>
-      <table>
-          <% comment.comments.each do |childComment| %>
-              <tr><td> &nbsp - &nbsp <%= childComment.user.username %> &nbsp | &nbsp <%= childComment.body %></td></tr>
-              <%end%>
-      </table>
-    </tr>
-  <% end %>
-</table> -->

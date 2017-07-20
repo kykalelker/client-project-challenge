@@ -3,7 +3,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @movies = @user.movies
     @favorites = @user.favorites
-    @comments = @user.comments 
+    @comments = @user.comments
+    @com_movies = @user.commented_movies
   end
 
   def new
